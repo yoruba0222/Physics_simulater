@@ -2,7 +2,6 @@
 / 　球体の自由落下シミュレーション
 */
 
-package Samples;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -14,7 +13,6 @@ import javafx.animation.*;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 public class Fall extends Application {
     //オブジェクト
     Circle circle;
