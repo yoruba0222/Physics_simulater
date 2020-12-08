@@ -1,2 +1,4 @@
-#classファイルの非認識設定
+#classファイル,imlファイル,xmlファイルの非認識設定
 *.class
+*.iml
+*.xml
