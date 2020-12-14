@@ -1,11 +1,3 @@
-/*
-/  床との衝突を検出する
-/
-/
-*/
-
-package Samples;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -65,17 +57,23 @@ public class CollisionFloor extends Application {
     //落下イベント
     void fallAction(ActionEvent event) {
         time += 0.1;
+        
+        //衝突判定.
         if (MyMath.getDistance(circle.getCenterX(), 0.5  * GRAVITY * (time + 0.1) * (time + 0.1), circle.getCenterX(), rect.getY()) < 50
                 || circleSpeed < 0) {
             circle.setCenterY(699);
             time = 0;
             floorCollision = true;
         } else floorCollision = false;
+
+        //非衝突時の処理
         if (floorCollision != true){
             double y = 0.5 * GRAVITY * time * time;
             circleSpeed = time * GRAVITY;
             circleSpeedNow = circleSpeed;
             circle.setCenterY(y);
+
+        //衝突時の処理
         } else {
             circleSpeed = circleSpeedNow + time * (-1) * GRAVITY;
             circle.setCenterY(circleSpeedNow * time + 0.5 * (-1) * GRAVITY * time * time);

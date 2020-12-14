@@ -1,5 +1,3 @@
-package Samples;
-
 import javafx.application.Application;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.MouseButton;
