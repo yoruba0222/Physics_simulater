@@ -5,3 +5,4 @@
 *.dvi
 *.aux
 *.log
+/out
