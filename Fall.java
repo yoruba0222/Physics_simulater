@@ -46,7 +46,7 @@ public class Fall extends Application {
 
         //落下運動
         Timeline timeline = new Timeline(
-            new KeyFrame(Duration.millis(17), event -> fallAction(event))
+            new KeyFrame(Duration.millis(16.7), event -> fallAction(event))
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
