@@ -1,4 +1,5 @@
 \documentclass[11pt,aj4]{jarticle}
+\usepackage{amsmath}
 \begin{document}
 
 \title{物理エンジンをつくりたい}
@@ -72,6 +73,31 @@
 
     \[
         \cos^2\phi_x + \cos^2\phi_y + \cos^2\phi_z = 1
+    \]
+
+    ・各座標軸のベクトル
+
+    \[
+        \left\{
+        v_x = |V| \cos\phi_x
+        v_y = |V| \cos\phi_y
+        v_z = |V| \cos\phi_z
+        \right\}
+    \]
+
+    ・外積の式
+
+    $\vec{a}$と$\vec{b}$がなす角を$\phi$とし、\\
+    $\vec{a} = (a_1, a_2, a_3)$,$\vec{b} = (b_1, b_2, b_3)$とすると、
+
+    \[
+        \begin{split}
+        \vec{a} \times \vec{b}
+        &=& (a_2 b_3 - a_3 b_2, a_3 b_1 - a_1 b_3, a_1 b_2 - a_2 b_1) \\
+
+        |\vec{a} \times \vec{b}|
+        &=& |\vec{a}||\vec{b}| \sin \phi
+            \end{split}
     \]
 
 \end{document}
