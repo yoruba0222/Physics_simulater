@@ -1,60 +1,83 @@
-import javafx.application.Application;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.MouseButton;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-public class Drag extends Application{
-    Vector2 mousePos = new Vector2(0, 0);
-    int mouse_Click_Flag = 0;
-    Rectangle rect;
-    @Override
-    public void start(Stage stage) throws Exception {
-        stage.setTitle("Test");
-        rect = new Rectangle(100,100);
-        rect.setX(110);
-        rect.setY(220);
-        rect.setFill(Color.BLUE);
-        Pane root = new Pane();
-        root.getChildren().add(rect);
-        /*ドラッグ操作
-        Timeline timeline = new Timeline(
-            new KeyFrame(Duration.millis(17), event -> doMoveAction(event))
-        );
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();*/
-        Scene scene = new Scene(root);
-        //クリックした時のフラグの変動
-        System.out.println("ああああ");
-        scene.setOnMouseClicked(event -> moveObject(event));
-        scene.setOnMouseDragged(event -> moveObject(event));
-        scene.setOnMouseReleased(event -> releaseObject(event));
-        stage.setScene(scene);
-        stage.show();
-    }
-    void releaseObject(MouseEvent event) {
-        if(event.getButton() == MouseButton.PRIMARY && mouse_Click_Flag == 1) {
-            mouse_Click_Flag = 0;
-        }
-    }
-    void moveObject(MouseEvent event) {
-        //if(event.getEventType() == MouseEvent.MOUSE_PRESSED /*&&
-        //    event.getButton() == MouseButton.PRIMARY*/) {
-            double rectX = rect.getX();
-            double rectY = rect.getY();
-            double mouseX = event.getSceneX();
-            double mouseY = event.getSceneY();
-            double distance = Math.sqrt(Math.pow(rectX - mouseX, 2) + Math.pow(rectY - mouseY, 2));
-            if(distance <= 50)mouse_Click_Flag = 1;
-            else mouse_Click_Flag = 0;
-            System.out.println(event.getX() + ":" + event.getY());
-        //}
-        /*else*/ if(event.getEventType() == MouseEvent.MOUSE_DRAGGED &&
-            mouse_Click_Flag == 1) {
-                rect.setX(event.getSceneX());
-                rect.setY(event.getSceneY());
-        }
-    }
+import java.util.ArrayList;
+
+public class Drag {
+          private ArrayList<ExpandedCircle> circleList = new ArrayList<>();
+          private ArrayList<ExpandedRectangle> rectList = new ArrayList<>();
+          private ArrayList<Boolean> circle_Clicked_Frag = new ArrayList<>();
+          private ArrayList<Boolean> rect_Clicked_Frag = new ArrayList<>();
+
+          public void setDragedCircle(ExpandedCircle circle){
+                    circleList.add(circle);
+                    circle_Clicked_Frag.add(false);
+          }
+          public void setDragedRectangle(ExpandedRectangle rect) {
+                    rectList.add(rect);
+                    rect_Clicked_Frag.add(false);
+          }
+
+          // drag functions
+          public void releaseObject(MouseEvent event) {
+                    for(int i = 0;i < circle_Clicked_Frag.size();i++) {
+                              if (event.getButton() == MouseButton.PRIMARY && circle_Clicked_Frag.get(i) == true) {
+                                        circle_Clicked_Frag.set(i, false);
+                                        return;
+                              }
+                    }
+                    for(int i = 0;i < rect_Clicked_Frag.size();i++) {
+                              if (event.getButton() == MouseButton.PRIMARY && rect_Clicked_Frag.get(i) == true) {
+                                        rect_Clicked_Frag.set(i, false);
+                                        return;
+                              }                   
+                    }
+          }
+          public void moveObject(MouseEvent event) {
+                    //rectangle processings
+                    for(int i=0;i < rectList.size(); i++) {
+                              double rectX = rectList.get(i).getPositionX();
+                              double rectY = rectList.get(i).getPositionY();
+                              double mouseX = event.getSceneX();
+                              double mouseY = event.getSceneY();
+                              double distance = Math.sqrt(Math.pow(rectX - mouseX, 2)
+                                        + Math.pow(rectY - mouseY, 2));
+                              System.out.println(distance);
+                              if(distance <= 50)rect_Clicked_Frag.set(i, true);
+                              else rect_Clicked_Frag.set(i, false);
+                              System.out.println(event.getX() + ":" + event.getY());
+              //}
+              /*else*/ if(event.getEventType() == MouseEvent.MOUSE_DRAGGED &&
+                      rect_Clicked_Frag.get(i) == true && rectList.get(i).toString()
+                      == "ExpandedRectangle") {
+                              rectList.get(i).setX(event.getSceneX());
+                              rectList.get(i).setY(event.getSceneY());
+                              rectList.get(i).position.x = event.getSceneX();
+                              rectList.get(i).position.y = event.getSceneY();
+                              return;
+                              }
+                    }
+                    //circle processings
+                    for(int i=0;i < circleList.size();i++) {
+                              double circleX = circleList.get(i).getPositionX();
+                              double circleY = circleList.get(i).getPositionY();
+                              double mouseX = event.getSceneX();
+                              double mouseY = event.getSceneY();
+                              double distance = Math.sqrt(Math.pow(circleX - mouseX, 2)
+                                      + Math.pow(circleY - mouseY, 2));
+                              System.out.println(distance);
+                              if(distance <= 50)circle_Clicked_Frag.set(i, true);
+                              else circle_Clicked_Frag.set(i, false);
+                              System.out.println(event.getX() + ":" + event.getY());
+                              //}
+                              /*else*/ if(event.getEventType() == MouseEvent.MOUSE_DRAGGED &&
+                                circle_Clicked_Frag.get(i) == true && circleList.get(i).toString()
+                                  == "ExpandedCircle") {
+                                        circleList.get(i).setCenterX(event.getSceneX());
+                                        circleList.get(i).setCenterY(event.getSceneY());
+                                        circleList.get(i).position.x = event.getSceneX();
+                                        circleList.get(i).position.y = event.getSceneY();
+                                        return;
+                              }
+                    }
+          }
 }
