@@ -2,6 +2,7 @@ import javafx.scene.shape.Rectangle;
 
 public class ExpandedRectangle extends Rectangle {
     public Vector2 position = new Vector2(this.getPositionX(), this.getPositionY());
+    public double inertia;
     private Vector2 centerOfGravity;
     private double mass;
 
@@ -12,6 +13,8 @@ public class ExpandedRectangle extends Rectangle {
 
     ExpandedRectangle(double centerX, double centerY, double width, double height) {
         super(centerX, centerY, width, height);
+        //this.centerOfGravity
+        this.mass = 1.0; //[kg]
     }
 
     //properties
@@ -28,5 +31,23 @@ public class ExpandedRectangle extends Rectangle {
       public void setPositionY(double value) {
           super.setY(value);
           this.position.y = value;
+      }
+      public void setSide(double value) {
+                super.setWidth(value);
+                this.setInertia();
+      }
+      public void setVartival(double value) {
+                super.setHeight(value);
+                this.setInertia();
+      }
+      public void setMass(double value) {
+                this.mass = value;
+                this.setInertia();
+      }
+      public void setInertia() {
+                this.inertia = (1/12) * this.mass * (Math.pow(super.getWidth(), 2) + Math.pow(super.getHeight(), 2));
+      }
+      public double getInertia() {
+                return this.inertia;
       }
 }
