@@ -77,7 +77,7 @@ public class DrawLine extends Application{
                     double m = (this.endY - this.startY) / (this.endX - this.startX);
                     double crossX = (200.0+200.0*m+m*m*this.startX-m*this.startY) / (1+m*m);
                     double crossY = m*crossX-m*this.startX+this.startY;
-                    double leastDis = MyMath.getDistance(crossX, crossY, originPoint.getCenterX(), originPoint.getCenterY());
+                    //double leastDis = MyMath.getDistance(crossX, crossY, originPoint.getCenterX(), originPoint.getCenterY());
                     double startDis = MyMath.getDistance(this.startX, this.startY, originPoint.getCenterX(), originPoint.getCenterY());
                     double endDis = MyMath.getDistance(this.endX, this.endY, originPoint.getCenterX(), originPoint.getCenterY());
                     
