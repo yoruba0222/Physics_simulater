@@ -3,7 +3,7 @@ import javafx.scene.shape.Rectangle;
 public class ExpandedRectangle extends Rectangle {
     public Vector2 position = new Vector2(this.getPositionX(), this.getPositionY());
     public double inertia;
-    private Vector2 centerOfGravity;
+    //private Vector2 centerOfGravity;
     private double mass;
 
     @Override

@@ -1,14 +1,14 @@
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Paint;
+//import javafx.scene.input.MouseButton;
+//import javafx.scene.input.MouseEvent;
+//import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
 public class ExpandedCircle extends Circle {
     public Vector2 position = new Vector2(this.getPositionX(), this.getPositionY());
-    private Vector2 centerOfGravity;
-    private double mass;
+    //private Vector2 centerOfGravity;
+    //private double mass;
     private double time = 0;
-    private boolean clickedByMouse = false;
+    //private boolean clickedByMouse = false;
 
     @Override
     public String toString(){
