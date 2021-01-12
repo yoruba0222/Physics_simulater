@@ -36,8 +36,8 @@ public class LimitedSystemVersion extends Application {
     final private double INIT_HEIGHT = 100;
 
     //field variable
-    final private int FLOORWIDTH = 1600;    //the width of the stage
-    final private int FLOORHEIGHT = 1000;   //the height of the stage
+    final private int FLOORWIDTH = 1400;    //the width of the stage
+    final private int FLOORHEIGHT = 100;   //the height of the stage
 
     //main function
     public static void main(String[]args) { Application.launch(args); }
