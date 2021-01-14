@@ -74,7 +74,23 @@ public class InertiaRect extends Application{
                     // 力積
                     double impulse = MyMath.getDistance(powerVec.x, powerVec.y, 0, 0)*MyMath.getDistance(radiusVec.x, radiusVec.y, 0, 0)*Math.sin(rad) ;
                     // Δωの導出
-                    double deltaangularVelocity = impulse / inertia; //ここかな？
+                    double deltaangularVelocity = impulse / inertia; //ここかな
+
+                    // どちら周りか判定する
+                    //boolean around = false; // falseなら時計回り,trueなら反時計回り
+                    double len0, len1, radC0, radC1, radS0, radS1, rad0, rad1;
+                    len0 = MyMath.getDistance(powerVec.x, powerVec.y, 0, 0);
+                    len1 = MyMath.getDistance(radiusVec.x, radiusVec.y, 0, 0);
+                    radC0 = Math.acos(powerVec.x / len0);
+                    radC1 = Math.acos(radiusVec.x / len1);
+                    radS0 = Math.asin(powerVec.y / len0);
+                    radS1 = Math.asin(radiusVec.y / len1);
+                    if (radS0 < 0) radS0 += Math.PI*2;
+                    if (radS1 < 0) radS1 += Math.PI*2;
+                    rad0 = Math.max(radC0, radS0);
+                    rad1 = Math.max(radC1, radS1);
+
+                    if (rad0 < rad1) deltaangularVelocity *= -1;
 
                     angularVelocity += deltaangularVelocity;
           }
@@ -83,7 +99,6 @@ public class InertiaRect extends Application{
                     double changedMass = Double.parseDouble(m);
                     mass = changedMass;
                     inertia = (1.0/6.0) * mass * rect.getWidth() * rect.getWidth();
-
           }
           private void update(ActionEvent event) {
                     double angulSpeed = Math.toDegrees(angularVelocity) / 60;
