@@ -7,7 +7,7 @@ public class ExpandedCircle extends Circle {
     public Vector2 position = new Vector2(this.getPositionX(), this.getPositionY());
     //private Vector2 centerOfGravity;
     //private double mass;
-    private double time = 0;
+    //private double time = 0;
     //private boolean clickedByMouse = false;
 
     @Override
@@ -20,15 +20,15 @@ public class ExpandedCircle extends Circle {
         super(centerX, centerY, radius);
     }
 
-    public void update() {
-        time += 0.1;
+    //public void update() {
+    //    time += 0.1;
 
-    }
+    //}
 
     //properties
-    public void initTime() {
-        time = 0;
-    }
+    //public void initTime() {
+    //    time = 0;
+    //}
     public double getPositionX() { return super.getCenterX(); }
     public double getPositionY() { return super.getCenterY(); }
     public void setPositionX(double value) {
