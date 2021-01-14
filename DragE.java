@@ -1,4 +1,5 @@
 import javafx.scene.input.MouseEvent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseButton; 
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
@@ -13,6 +14,12 @@ public class DragE {
           private ArrayList<Boolean> rect_Clicked_Frag = new ArrayList<>();
           private ArrayList<Boolean> tri_Clicked_Frag = new ArrayList<>();
 
+          public void setScene(Scene scene) {
+                    scene.setOnMouseClicked(event -> moveObject(event));
+                    scene.setOnMouseDragged(event -> moveObject(event));
+                    scene.setOnMouseReleased(event -> releaseObject(event));
+          }
+
           public void setDragedCircle(Circle circle){
                     circleList.add(circle);
                     circle_Clicked_Frag.add(false);
@@ -20,6 +27,10 @@ public class DragE {
           public void setDragedRectangle(Rectangle rect) {
                     rectList.add(rect);
                     rect_Clicked_Frag.add(false);
+          }
+          public void setDragedPolygon(Polygon pol) {
+                    triList.add(pol);
+                    tri_Clicked_Frag.add(false);
           }
 
           // drag functions
