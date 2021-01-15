@@ -1,0 +1,227 @@
+<mxfile host="65bd71144e" modified="2021-01-15T09:11:10.146Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="paQONAwMZm3PX7np4Uif" version="13.10.0" type="embed">
+    <diagram id="0Gj9gpTwv_mEAL3eeQjb" name="Page-1">
+        <mxGraphModel dx="950" dy="593" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Start" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="107.5" y="10" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="引かれる対象となった図形の重心と原点を結ぶベクトルを求める" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="92.5" y="80" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="そのベクトルでミンコフスキー差の図形のサポート写像を求める" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="92.5" y="180" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="4" target="3" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="182.5" y="370" as="sourcePoint"/>
+                        <mxPoint x="162.5" y="139" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="" style="endArrow=none;html=1;" parent="1" source="3" target="2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="162.5" y="120" as="sourcePoint"/>
+                        <mxPoint x="232.5" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" value="求めた支点から原点を結ぶベクトルを求める" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="92.5" y="280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="そのベクトルでミンコフスキー差の図形のサポート写像を求める" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="92.5" y="380" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="求めた二つの支点を結び、その線分上の原点との最近点を求める" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="92.5" y="480" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="その線分上の最近点から原点を結ぶベクトルを求める" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="92.5" y="580" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="そのベクトルでミンコフスキー差を求めた図形のサポート写像を求める" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="92.5" y="680" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;span style=&quot;color: rgb(240 , 240 , 240) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(42 , 42 , 42) ; display: inline ; float: none&quot;&gt;これまでに求めた三支点を結んで作られた三角形は原点を含んでいるか？&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="780" width="225" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="endArrow=none;html=1;" parent="1" source="8" target="4" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="152.5" y="320" as="sourcePoint"/>
+                        <mxPoint x="232.5" y="770" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="" style="endArrow=none;html=1;" parent="1" target="10" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="192.5" y="540" as="sourcePoint"/>
+                        <mxPoint x="242.5" y="490" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="" style="endArrow=none;html=1;" parent="1" source="10" target="9" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="192.5" y="540" as="sourcePoint"/>
+                        <mxPoint x="242.5" y="490" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="" style="endArrow=none;html=1;" parent="1" source="9" target="8" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="192.5" y="540" as="sourcePoint"/>
+                        <mxPoint x="242.5" y="490" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="" style="endArrow=none;html=1;" parent="1" source="11" target="10" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="192.5" y="540" as="sourcePoint"/>
+                        <mxPoint x="242.5" y="490" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="" style="endArrow=none;html=1;" parent="1" source="12" target="14" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="192.5" y="540" as="sourcePoint"/>
+                        <mxPoint x="242.5" y="490" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="" style="endArrow=none;html=1;" parent="1" source="11" target="12" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="192.5" y="540" as="sourcePoint"/>
+                        <mxPoint x="242.5" y="490" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="Yes" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="182.5" y="910" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="endArrow=classic;html=1;" parent="1" source="14" target="29" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="122.5" y="930" as="sourcePoint"/>
+                        <mxPoint x="152.5" y="960" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="end" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="92.5" y="1670" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="Colisionフラグをtrueにする" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="92.5" y="960" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="endArrow=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="29" target="28" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="212.5" y="960" as="sourcePoint"/>
+                        <mxPoint x="262.5" y="910" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="No" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="242.5" y="800" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="最後に求めた支点とそれを挟む二つの線分と原点との最近点をもとめる" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="312.5" y="910" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="" style="endArrow=none;html=1;" parent="1" source="14" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="452.5" y="830" as="sourcePoint"/>
+                        <mxPoint x="372.5" y="850" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="" style="endArrow=none;html=1;" parent="1" source="32" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="302.5" y="880" as="sourcePoint"/>
+                        <mxPoint x="372.5" y="850" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="36" value="最近点が三角形の頂点に重なっている？" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="292.5" y="1010" width="160" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="endArrow=none;html=1;" parent="1" source="36" target="32" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="302.5" y="929" as="sourcePoint"/>
+                        <mxPoint x="352.5" y="880" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="Yes" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="402.5" y="1120" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="No" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="452.5" y="1020" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="Collisionフラグをfalseにする&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="312.5" y="1320" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="36" target="42" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="282.5" y="1120" as="sourcePoint"/>
+                        <mxPoint x="332.5" y="1070" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="44" value="" style="endArrow=none;html=1;" parent="1" source="42" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="282.5" y="1120" as="sourcePoint"/>
+                        <mxPoint x="153" y="1600" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="373" y="1600"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="その最近点から原点を結んだベクトルのサポート写像を求める" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="522.5" y="1090" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="36" target="45">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="580" y="1220" as="sourcePoint"/>
+                        <mxPoint x="630" y="1170" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="583" y="1065"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="既に選ばれている点から、先ほど選んだ点との距離が一番遠いものを消去する" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="522.5" y="1190" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="48" target="45">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="582" y="1230" as="sourcePoint"/>
+                        <mxPoint x="630" y="1370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="51" value="今現在存在している三支点を繋いだ三角形内に原点が含まれているか？" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="502.5" y="1290" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="51" target="48">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="1350" as="sourcePoint"/>
+                        <mxPoint x="450" y="1300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="53" value="No" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="1280" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="51">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="1240" as="sourcePoint"/>
+                        <mxPoint x="370" y="880" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="760" y="1340"/>
+                            <mxPoint x="760" y="880"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="56" value="Yes" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="1390" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="Collisionフラグをtrueにする" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="522.5" y="1430" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="51" target="58">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="1470" as="sourcePoint"/>
+                        <mxPoint x="450" y="1420" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="60" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="58">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="1470" as="sourcePoint"/>
+                        <mxPoint x="370" y="1540" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="583" y="1540"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
