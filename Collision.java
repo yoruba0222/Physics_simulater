@@ -7,11 +7,11 @@ import javafx.stage.Stage;
 
 public class Collision extends Application {
 
-          Rectangle rect;
-          Polygon triangle;
-          Pane pane;
+          private Rectangle rect;
+          private Polygon triangle;
+          private Pane pane;
 
-          DragE drag;
+          private DragE drag;
 
           @Override
           public void start(Stage stage) throws Exception {
@@ -29,7 +29,7 @@ public class Collision extends Application {
 
                     System.out.println(triangle.getLayoutX()+":"+triangle.getLayoutY());
 
-                    drag.setDragedRectangle(rect);
+                    //drag.setDragedRectangle(rect);
                     drag.setDragedPolygon(triangle);
                     pane.getChildren().addAll(rect, triangle);
                     Scene scene = new Scene(pane);
@@ -37,5 +37,11 @@ public class Collision extends Application {
                     drag.setScene(scene);
 
                     stage.show();
+          }
+
+
+          // GJK Algorythm
+          private void gjk() {
+                    Vector2 rectCenter = new Vector2(0, 0);
           }
 }
