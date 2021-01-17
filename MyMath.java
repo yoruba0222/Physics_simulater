@@ -13,4 +13,9 @@ public class MyMath {
                     vec.x /= vecLength; vec.y /= vecLength;
                     return vec;
           }
+
+          //ベクトルのノルムを取得する
+          public static double getNorm(Vector2 vec) {
+                    return getDistance(vec.x, vec.y, 0, 0);
+          }
 }
