@@ -31,7 +31,7 @@ public class SMF {
                               );
                               vertex[3] = new Vector2(
                                         length * Math.cos(Math.toRadians(-315+rectTheta)) + rectCenterPos.x,
-                                        vertex[3].y = length * Math.sin(Math.toRadians(-315+rectTheta)) + rectCenterPos.y
+                                        length * Math.sin(Math.toRadians(-315+rectTheta)) + rectCenterPos.y
                               );
 
                               smPosition.x = rectCenterPos.x + MyMath.getDistance(
@@ -46,7 +46,15 @@ public class SMF {
                                         distance[i] = MyMath.getDistance(smPosition.x, smPosition.y, vertex[i].x, vertex[i].y);
                               }
 
-                              smPosition.init(vertex[minIndex(distance)].x, vertex[minIndex(distance)].x);
+                              //for (int i=0; i<4; i++) {
+                              //          System.out.println(distance[i]);
+                              //}
+
+                              int minIndexValue = minIndex(distance);
+
+                              smPosition.init(vertex[minIndexValue].x, vertex[minIndexValue].y);
+
+                              
                     }
                     else if (type.contains("Circle")) {
 
@@ -63,21 +71,34 @@ public class SMF {
 
                               Polygon polygon = (Polygon) shape;
 
-                              Vector2[] vertex = new Vector2[3];
-                              for (int i=0; i<vertex.length; i+=2) {
+                              Vector2[] vertex = new Vector2[6];
+                              for (int i=0; i<3; i++) {
                                         vertex[i] = new Vector2(polygon.getPoints().get(i), polygon.getPoints().get(2*i+1));
+                                        System.out.println(vertex[i].x+":"+vertex[i].y);
                               }
-                              Vector2 circleCenter = new Vector2((vertex[0].x+vertex[1].x)/2, (vertex[0].y+vertex[1].y));
+                              System.out.println(polygon.toString());
+                              Vector2 circleCenter = new Vector2((vertex[0].x+vertex[1].x)/2, (vertex[0].y+vertex[1].y)/2);
+                              double radius = MyMath.getDistance(circleCenter.x, circleCenter.y, vertex[2].x, vertex[2].y);
+
+                              smPosition.init(
+                                        circleCenter.x + radius * (d.x/MyMath.getNorm(d)),
+                                        circleCenter.y + radius * (d.y/MyMath.getNorm(d))
+                              );
 
                               double[] distance = new double[3];
                               for (int i=0; i<distance.length; i++) {
-                                        distance[i] = MyMath.getDistance(circleCenter.x, circleCenter.y, vertex[i].x, vertex[i].y);
+                                        distance[i] = MyMath.getDistance(smPosition.x, smPosition.y, vertex[i].x, vertex[i].y);
                               }
 
-                              smPosition.init(vertex[minIndex(distance)].x, vertex[minIndex(distance)].y);
-                              
+                              //or (int i=0; i<3; i++)System.out.println(distance[i]);
 
+                              int minIndexValue = minIndex(distance);
+
+                              smPosition.init(vertex[minIndexValue].x, vertex[minIndexValue].y);
+                              
                     }
+
+                    
 
                     return smPosition;
           }

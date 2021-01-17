@@ -11,7 +11,7 @@ public class test extends Application {
                     Shape shape;
                     Rectangle rect = new Rectangle();
                     Circle circle = new Circle();
-                    Polygon polygon = new Polygon();
+                    Polygon polygon = new Polygon(1,1,2,2,3,3);
                     shape = rect;
                     System.out.println(shape.toString());
                     System.out.println(circle.toString());
