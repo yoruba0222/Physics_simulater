@@ -35,7 +35,7 @@ public class MyMath {
 
                     //計算フェーズ
                     double m = (endPos.y - startPos.y) / (endPos.x - startPos.x);
-                    double crossX = (200.0+200.0*m+m*m*startPos.x-m*startPos.y) / (1+m*m);
+                    double crossX = (point.x+point.y*m+m*m*startPos.x-m*startPos.y) / (1+m*m);
                     double crossY = m*crossX-m*startPos.x+startPos.y;
                     //double leastDis = MyMath.getDistance(crossX, crossY, pointX(), pointY());
                     double startDis = MyMath.getDistance(startPos.x, startPos.y, point.x, point.y);
@@ -72,7 +72,7 @@ public class MyMath {
 
                     //計算フェーズ
                     double m = (endPos.y - startPos.y) / (endPos.x - startPos.x);
-                    double crossX = (200.0+200.0*m+m*m*startPos.x-m*startPos.y) / (1+m*m);
+                    double crossX = (point.x+point.y*m+m*m*startPos.x-m*startPos.y) / (1+m*m);
                     double crossY = m*crossX-m*startPos.x+startPos.y;
                     //double leastDis = MyMath.getDistance(crossX, crossY, pointX(), pointY());
                     double startDis = MyMath.getDistance(startPos.x, startPos.y, point.x, point.y);
@@ -90,7 +90,7 @@ public class MyMath {
                               leastPosition.init(endPos.x, endPos.y);
                     }
 
-                    return leastPosition;
+                    return true;
                     
           }
 }

@@ -14,7 +14,7 @@ public class DrawLine extends Application{
           ArrayList<Line> lineList;
 
           Line tmpLine = new Line(0, 0, 0, 0);
-          ExpandedCircle originPoint;
+          ExpandedCircle originPoint, leastPoint;
 
 
           ExpandedPane pane;
@@ -29,9 +29,10 @@ public class DrawLine extends Application{
                     pane = new ExpandedPane();
                     lineList = new ArrayList<>();
                     originPoint = new ExpandedCircle(200, 200, 10);
+                    leastPoint = new ExpandedCircle(-100, -100, 10);
                     originPoint.setFill(Color.PINK);
                     
-                    pane.getChildren().addAll(tmpLine, originPoint);
+                    pane.getChildren().addAll(tmpLine, originPoint, leastPoint);
 
                     Scene scene = new Scene(pane);
                     scene.setOnMousePressed(event -> setStartPosition(event));
@@ -101,5 +102,8 @@ public class DrawLine extends Application{
                     }
                     leastLine.setStroke(Color.RED);
                     pane.getChildren().add(leastLine);
+
+                    Vector2 leastPos = MyMath.getMinPosition(new Vector2(startX, startY), new Vector2(endX, endY), new Vector2(200, 200));
+                    leastPoint.setCenterX(leastPos.x);      leastPoint.setCenterY(leastPos.y);
           }
 }
