@@ -57,7 +57,7 @@ public class GJK {
                     // その線分上の最近点から原点を結ぶベクトルを求める
                     Vector2 vec2 = leastPosition.inverse();
 
-                    // そのベクトルでミンコフスキーさを求めた図形のサポート写像を求める
+                    // そのベクトルでミンコフスキーさを求めた図形のサポート写像を求むる
                     Vector2 thirdPosition = new Vector2(
                               SMF.getSupportMapping(shapeA, vec2).x - SMF.getSupportMapping(shapeB, vec2.inverse()).x,
                               SMF.getSupportMapping(shapeA, vec2).y - SMF.getSupportMapping(shapeB, vec2.inverse()).y
