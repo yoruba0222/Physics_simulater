@@ -50,12 +50,12 @@ public class GJK {
                     );
 
                     // 求めた二つの支点を結び、その線分上の原点との最近点を求める.
-                    Vector2 leastPosition = MyMath.getMinPosition(
+                    Vector2 secondPosition = MyMath.getMinPosition(
                               firstSmPosition, secondSmPosition, new Vector2(0, 0)
                     );
 
                     // その線分上の最近点から原点を結ぶベクトルを求める
-                    Vector2 vec2 = leastPosition.inverse();
+                    Vector2 vec2 = secondPosition.inverse();
 
                     // そのベクトルでミンコフスキーさを求めた図形のサポート写像を求むる
                     Vector2 thirdPosition = new Vector2(
@@ -63,6 +63,8 @@ public class GJK {
                               SMF.getSupportMapping(shapeA, vec2).y - SMF.getSupportMapping(shapeB, vec2.inverse()).y
                     );
 
+                    // これまでに求めた三支点を結んで作られた三角形は原点を含んでいるか？
+                    
 
                     return collisionJudge;
           }
