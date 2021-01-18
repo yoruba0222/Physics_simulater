@@ -30,4 +30,19 @@ public class Vector2 {
           public static Vector2 sub(Vector2 vec0, Vector2 vec1) {
                     return new Vector2(vec0.x-vec1.x, vec0.y-vec1.y);
           }
+
+          // 二つのベクトルを比べる.
+          public boolean equals(Vector2 vec) {
+                    if (this.x == vec.x && this.y == vec.y) return true;
+                    else return false;
+          }
+          public static boolean equals(Vector2 vec0, Vector2 vec1) {
+                    if (vec0.x == vec1.x && vec0.y == vec1.y) return true;
+                    else return false;
+          }
+
+          // 二つのベクトルの間の大きさを取得する
+          public static double length(Vector2 vec0, Vector2 vec1) {
+                    return Math.sqrt(Math.pow(vec0.x-vec1.x, 2)+Math.pow(vec0.y-vec1.y, 2));
+          }
 }
