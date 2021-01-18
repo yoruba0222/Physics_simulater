@@ -23,16 +23,11 @@ public class Vector2 {
 
           // ベクトルの外積
           public static double cross(Vector2 vec0, Vector2 vec1) {
-                double value;
+                    return vec0.x * vec1.y - vec0.y * vec1.x;
+          }
 
-                double theta = (
-                          Math.acos(
-                                    (vec0.x*vec1.x+vec0.y*vec1.y) / (MyMath.getNorm(vec0)*MyMath.getNorm(vec1))
-                          )
-                );
-
-                value = MyMath.getNorm(vec0) * MyMath.getNorm(vec1) * Math.sin(theta);
-
-                return value;
+          // ２点を結ぶベクトルを求める(→この向きです)
+          public static Vector2 sub(Vector2 vec0, Vector2 vec1) {
+                    return new Vector2(vec0.x-vec1.x, vec0.y-vec1.y);
           }
 }
