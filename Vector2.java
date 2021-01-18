@@ -13,4 +13,8 @@ public class Vector2 {
               this.x = x;
               this.y = y;
     }
+
+    public Vector2 inverse() {
+              return new Vector2((-1)*this.x, (-1)*this.y);
+    }
 }
