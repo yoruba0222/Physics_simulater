@@ -63,10 +63,10 @@ public class DragE {
                               double mouseY = event.getSceneY();
                               double distance = Math.sqrt(Math.pow(rectX - mouseX, 2)
                                         + Math.pow(rectY - mouseY, 2));
-                              System.out.println(distance);
+                              //System.out.println(distance);
                               if(distance <= 50)rect_Clicked_Frag.set(i, true);
                               else rect_Clicked_Frag.set(i, false);
-                              System.out.println(event.getX() + ":" + event.getY());
+                              //System.out.println(event.getX() + ":" + event.getY());
                     //}
                     /*else*/ if(event.getEventType() == MouseEvent.MOUSE_DRAGGED &&
                     rect_Clicked_Frag.get(i) == true /* && rectList.get(i).toString()
@@ -84,10 +84,10 @@ public class DragE {
                               double mouseY = event.getSceneY();
                               double distance = Math.sqrt(Math.pow(circleX - mouseX, 2)
                                       + Math.pow(circleY - mouseY, 2));
-                              System.out.println(distance);
+                              //System.out.println(distance);
                               if(distance <= 50)circle_Clicked_Frag.set(i, true);
                               else circle_Clicked_Frag.set(i, false);
-                              System.out.println(event.getX() + ":" + event.getY());
+                              //System.out.println(event.getX() + ":" + event.getY());
                               //}
                               /*else*/ if(event.getEventType() == MouseEvent.MOUSE_DRAGGED &&
                                 circle_Clicked_Frag.get(i) == true /* && circleList.get(i).toString()
@@ -104,10 +104,10 @@ public class DragE {
                               double mouseY = event.getSceneY();
                               double distance = Math.sqrt(Math.pow(triX - mouseX, 2)
                                       + Math.pow(triY - mouseY, 2));
-                              System.out.println(distance);
+                              //System.out.println(distance);
                               if(distance <= 50)tri_Clicked_Frag.set(i, true);
                               else tri_Clicked_Frag.set(i, false);
-                              System.out.println(event.getX() + ":" + event.getY());
+                              //System.out.println(event.getX() + ":" + event.getY());
                               //}
                               /*else*/ if(event.getEventType() == MouseEvent.MOUSE_DRAGGED &&
                                         tri_Clicked_Frag.get(i) == true /* && circleList.get(i).toString()

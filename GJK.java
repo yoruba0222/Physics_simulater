@@ -1,12 +1,10 @@
-import java.util.Vector;
-
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 public class GJK {
           // shapeAが引かれる対象,shapeBが逆ベクトルの計算必要があるやつ
-          public boolean getCollisionJudge(Shape shapeA, Shape shapeB) {
+          public static boolean getCollisionJudge(Shape shapeA, Shape shapeB) {
                     Rectangle rect;
                     Circle circle;
 

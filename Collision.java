@@ -1,14 +1,16 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Polygon;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Collision extends Application {
 
           private Rectangle rect;
-          private Polygon triangle;
+          private Circle circle;
           private Pane pane;
 
           private DragE drag;
@@ -22,26 +24,27 @@ public class Collision extends Application {
 
                     drag = new DragE();
                     rect = new Rectangle(400, 400, 200, 200);
-                    triangle = new Polygon(0, -50*Math.sqrt(3), -100, 50*Math.sqrt(3), 100, 50*Math.sqrt(3));
-                    triangle.setLayoutX(100);
-                    triangle.setLayoutY(100);
+                    circle = new Circle(200, 200, 100);
                     pane = new Pane();
 
-                    System.out.println(triangle.getLayoutX()+":"+triangle.getLayoutY());
+                    //System.out.println(circle.getCenterX()+":"+circle.getCenterY());
 
                     //drag.setDragedRectangle(rect);
-                    drag.setDragedPolygon(triangle);
-                    pane.getChildren().addAll(rect, triangle);
+                    drag.setDragedCircle(circle);
+                    pane.getChildren().addAll(rect, circle);
                     Scene scene = new Scene(pane);
+
+                    scene.setOnMouseDragged(event -> changeColor(event));
+
                     stage.setScene(scene);
                     drag.setScene(scene);
 
                     stage.show();
           }
-
-
-          // GJK Algorythm
-          private void gjk() {
-                    Vector2 rectCenter = new Vector2(0, 0);
+          private void changeColor(MouseEvent event) {
+                    System.out.println("おちんぽ");
+                    if (GJK.getCollisionJudge(rect, circle)) {
+                              rect.setFill(Color.BLUE);
+                    } else rect.setFill(Color.RED);
           }
 }
