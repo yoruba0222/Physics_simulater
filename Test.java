@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class Test extends Application {
 
-          Polygon tri = new Polygon(100, 10, 20, 30, 6, 0);
+          Polygon tri = new Polygon(400, 10, 200, 300, 600, 0);
           @Override
           public void start(Stage stage) {
                     stage.setWidth(1000);
@@ -20,7 +20,6 @@ public class Test extends Application {
 
                     Pane pane = new Pane();
 
-                    tri = new Polygon(100, 10, 20, 30, 6, 0);
 
                     pane.getChildren().add(tri);
                     
@@ -33,7 +32,7 @@ public class Test extends Application {
           }
           private void mouseEvent(MouseEvent event) {
                     System.out.println("おちんぽ");
-                    if (JudgeInTriangle.getJudgeInTriangle(new Vector2(100, 10), new Vector2(20, 30), new Vector2(6, 0), new Vector2(event.getX(), event.getY()))) {
+                    if (JudgeInTriangle.getJudgeInTriangle(new Vector2(400, 10), new Vector2(200, 300), new Vector2(600, 0), new Vector2(event.getX(), event.getY()))) {
                               tri.setFill(Color.BLUE);
                     }
                     else tri.setFill(Color.RED);

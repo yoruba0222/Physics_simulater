@@ -42,7 +42,7 @@ public class Vector2 {
           }
 
           // 二つのベクトルの間の大きさを取得する
-          public static double length(Vector2 vec0, Vector2 vec1) {
+          public static double getLength(Vector2 vec0, Vector2 vec1) {
                     return Math.sqrt(Math.pow(vec0.x-vec1.x, 2)+Math.pow(vec0.y-vec1.y, 2));
           }
 }
