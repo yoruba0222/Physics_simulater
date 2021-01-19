@@ -64,7 +64,7 @@ public class DragE {
                               double distance = Math.sqrt(Math.pow(rectX - mouseX, 2)
                                         + Math.pow(rectY - mouseY, 2));
                               //System.out.println(distance);
-                              if(distance <= 50)rect_Clicked_Frag.set(i, true);
+                              if(distance <= 50 || rect_Clicked_Frag.get(i)) rect_Clicked_Frag.set(i, true);
                               else rect_Clicked_Frag.set(i, false);
                               //System.out.println(event.getX() + ":" + event.getY());
                     //}
@@ -73,6 +73,8 @@ public class DragE {
                     == "Rectangle" */) {
                               rectList.get(i).setX(event.getSceneX());
                               rectList.get(i).setY(event.getSceneY());
+                              
+                              
                               return;
                               }
                     }
@@ -85,11 +87,11 @@ public class DragE {
                               double distance = Math.sqrt(Math.pow(circleX - mouseX, 2)
                                       + Math.pow(circleY - mouseY, 2));
                               //System.out.println(distance);
-                              if(distance <= 50)circle_Clicked_Frag.set(i, true);
+                              if(distance <= 50 || circle_Clicked_Frag.get(i)) circle_Clicked_Frag.set(i, true);
                               else circle_Clicked_Frag.set(i, false);
                               //System.out.println(event.getX() + ":" + event.getY());
                               //}
-                              /*else*/ if(event.getEventType() == MouseEvent.MOUSE_DRAGGED &&
+                              /*else*/ if(/*event.getEventType() == MouseEvent.MOUSE_DRAGGED &&*/
                                 circle_Clicked_Frag.get(i) == true /* && circleList.get(i).toString()
                                   == "Circle" */) {
                                         circleList.get(i).setCenterX(event.getSceneX());

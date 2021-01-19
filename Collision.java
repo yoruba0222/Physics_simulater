@@ -40,7 +40,7 @@ public class Collision extends Application {
                     Scene scene = new Scene(pane);
 
                     Timeline timeline = new Timeline(
-                              new KeyFrame(javafx.util.Duration.millis(16.7), event -> changeColor(event))
+                              new KeyFrame(javafx.util.Duration.millis(100), event -> changeColor(event))
                     );
                     timeline.setCycleCount(Timeline.INDEFINITE);
                     timeline.play();
