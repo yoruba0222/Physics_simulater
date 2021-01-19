@@ -1,4 +1,5 @@
 import javafx.scene.input.MouseEvent;
+import javafx.event.EventType;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseButton; 
 import javafx.scene.shape.Circle;
@@ -57,16 +58,19 @@ public class DragE {
           public void moveObject(MouseEvent event) {
                     //rectangle processings
                     for(int i=0;i < rectList.size(); i++) {
-                              double rectX = rectList.get(i).getX();
-                              double rectY = rectList.get(i).getY();
-                              double mouseX = event.getSceneX();
-                              double mouseY = event.getSceneY();
-                              double distance = Math.sqrt(Math.pow(rectX - mouseX, 2)
-                                        + Math.pow(rectY - mouseY, 2));
-                              //System.out.println(distance);
-                              if(distance <= 50 || rect_Clicked_Frag.get(i)) rect_Clicked_Frag.set(i, true);
-                              else rect_Clicked_Frag.set(i, false);
-                              //System.out.println(event.getX() + ":" + event.getY());
+
+                              if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+                                        double rectX = rectList.get(i).getX();
+                                        double rectY = rectList.get(i).getY();
+                                        double mouseX = event.getSceneX();
+                                        double mouseY = event.getSceneY();
+                                        double distance = Math.sqrt(Math.pow(rectX - mouseX, 2)
+                                                  + Math.pow(rectY - mouseY, 2));
+                                        //System.out.println(distance);
+                                        if(distance <= 50) rect_Clicked_Frag.set(i, true);
+                                        else rect_Clicked_Frag.set(i, false);
+                                        //System.out.println(event.getX() + ":" + event.getY());
+                              }
                     //}
                     /*else*/ if(event.getEventType() == MouseEvent.MOUSE_DRAGGED &&
                     rect_Clicked_Frag.get(i) == true /* && rectList.get(i).toString()
@@ -80,18 +84,26 @@ public class DragE {
                     }
                     //circle processings
                     for(int i=0;i < circleList.size();i++) {
-                              double circleX = circleList.get(i).getCenterX();
-                              double circleY = circleList.get(i).getCenterY();
-                              double mouseX = event.getSceneX();
-                              double mouseY = event.getSceneY();
-                              double distance = Math.sqrt(Math.pow(circleX - mouseX, 2)
-                                      + Math.pow(circleY - mouseY, 2));
-                              //System.out.println(distance);
-                              if(distance <= 50 || circle_Clicked_Frag.get(i)) circle_Clicked_Frag.set(i, true);
-                              else circle_Clicked_Frag.set(i, false);
-                              //System.out.println(event.getX() + ":" + event.getY());
-                              //}
-                              /*else*/ if(/*event.getEventType() == MouseEvent.MOUSE_DRAGGED &&*/
+
+                              
+
+                              if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+
+                                        System.out.println(event.getEventType());
+
+                                        double circleX = circleList.get(i).getCenterX();
+                                        double circleY = circleList.get(i).getCenterY();
+                                        double mouseX = event.getSceneX();
+                                        double mouseY = event.getSceneY();
+                                        double distance = Math.sqrt(Math.pow(circleX - mouseX, 2)
+                                                + Math.pow(circleY - mouseY, 2));
+                                        //System.out.println(distance);
+                                        if(distance <= 50) circle_Clicked_Frag.set(i, true);
+                                        else circle_Clicked_Frag.set(i, false);
+                                        //System.out.println(event.getX() + ":" + event.getY());
+                                        //}
+                              }
+                              /*else*/ if(event.getEventType() == MouseEvent.MOUSE_DRAGGED &&
                                 circle_Clicked_Frag.get(i) == true /* && circleList.get(i).toString()
                                   == "Circle" */) {
                                         circleList.get(i).setCenterX(event.getSceneX());

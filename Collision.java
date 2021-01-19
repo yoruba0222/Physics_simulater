@@ -1,15 +1,13 @@
-import javafx.util.Duration;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import javafx.stage.Stage;
 
 public class Collision extends Application {
@@ -22,6 +20,10 @@ public class Collision extends Application {
 
           @Override
           public void start(Stage stage) throws Exception {
+
+                    try {
+
+                              assert circle != null : "お前ら何しとんねん";
 
                     stage.setTitle("Collision Test");
                     stage.setWidth(1000);
@@ -40,7 +42,8 @@ public class Collision extends Application {
                     Scene scene = new Scene(pane);
 
                     Timeline timeline = new Timeline(
-                              new KeyFrame(javafx.util.Duration.millis(100), event -> changeColor(event))
+                              new KeyFrame(Duration.millis(17.6), event -> changeColor(event))
+
                     );
                     timeline.setCycleCount(Timeline.INDEFINITE);
                     timeline.play();
@@ -51,11 +54,27 @@ public class Collision extends Application {
 
 
                     stage.show();
+
+                    } catch(Exception e) {
+                              System.out.println(e);
+                    }
+
           }
+
           private void changeColor(ActionEvent event) {
-                    System.out.println("おちんぽ");
+
+
+                    try {
+
+                    //System.out.println("おちんぽ");
                     if (GJK.getCollisionJudge(rect, circle)) {
                               rect.setFill(Color.BLUE);
                     } else rect.setFill(Color.RED);
+
+          } catch(Exception e) {
+                    System.out.println(e);
           }
+          }
+
+          
 }
