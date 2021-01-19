@@ -87,7 +87,7 @@ public class LimitedSystemVersion extends Application {
 
         //loop processing
         timeline = new Timeline(
-            new KeyFrame(Duration.millis(16.7), event -> pipeline.update(event))
+            new KeyFrame(Duration.millis(100), event -> pipeline.update(event))
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
     }

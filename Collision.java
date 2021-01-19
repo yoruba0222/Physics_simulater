@@ -1,4 +1,9 @@
+import javafx.util.Duration;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -34,14 +39,20 @@ public class Collision extends Application {
                     pane.getChildren().addAll(rect, circle);
                     Scene scene = new Scene(pane);
 
-                    scene.setOnMouseDragged(event -> changeColor(event));
+                    Timeline timeline = new Timeline(
+                              new KeyFrame(javafx.util.Duration.millis(16.7), event -> changeColor(event))
+                    );
+                    timeline.setCycleCount(Timeline.INDEFINITE);
+                    timeline.play();
 
                     stage.setScene(scene);
                     drag.setScene(scene);
 
+
+
                     stage.show();
           }
-          private void changeColor(MouseEvent event) {
+          private void changeColor(ActionEvent event) {
                     System.out.println("おちんぽ");
                     if (GJK.getCollisionJudge(rect, circle)) {
                               rect.setFill(Color.BLUE);
