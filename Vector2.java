@@ -45,4 +45,7 @@ public class Vector2 {
           public static double getLength(Vector2 vec0, Vector2 vec1) {
                     return Math.sqrt(Math.pow(vec0.x-vec1.x, 2)+Math.pow(vec0.y-vec1.y, 2));
           }
+
+          // 法線ベクトルを求める
+          
 }

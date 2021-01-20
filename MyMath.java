@@ -19,6 +19,7 @@ public class MyMath {
                     return getDistance(vec.x, vec.y, 0, 0);
           }
 
+          // 線分とある点の最近点を求める
           public static Vector2 getMinPosition(Vector2 startPos, Vector2 endPos, Vector2 point) {
 
                     Vector2 leastPosition = new Vector2();
