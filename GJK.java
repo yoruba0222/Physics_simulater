@@ -5,12 +5,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GJK {
-          // shapeAが引かれる対象,shapeBが逆ベクトルの計算必要があるやつ
-          public static boolean getCollisionJudge(Shape shapeA, Shape shapeB) {
-                    Rectangle rect;
-                    Circle circle;
 
-                    ArrayList<Vector2> smPos = new ArrayList<>();
+          // 貫通深度
+          private double penetrationDepth;
+          // 接触法線ベクトル
+          private Vector2 contactNormalVector;
+
+          private ArrayList<Vector2> smPos = new ArrayList<>();
+
+          private Rectangle rect;
+          private Circle circle;
+
+          // shapeAが引かれる対象,shapeBが逆ベクトルの計算必要があるやつ
+          public boolean getCollisionJudge(Shape shapeA, Shape shapeB) {
+
+                    smPos.clear();
 
                     // 図形によってセンターポイントを取得する時がバラバラなので図形によって分岐させる.
                     Vector2 centerA = new Vector2(0, 0), centerB = new Vector2(0, 0);
@@ -75,7 +84,6 @@ public class GJK {
 
                               if (!JudgeInTriangle.getJudgeInTriangle(smPos.get(0), smPos.get(1), smPos.get(2), new Vector2(0, 0))) {
 
-
                                         // 最後に求めた視点とそれを挟む二つの線分と原点との最近点を求める
                                         Vector2 leastPos;
                                         Vector2 leastPos0 = MyMath.getMinPosition(smPos.get(0), smPos.get(2), new Vector2(0, 0));
@@ -120,39 +128,55 @@ public class GJK {
 
                                                   // 内包している単体で原点から一番近い点を求め、原点とその点を結んだベクトルを求める。
                                                   Vector2[] minPositions = new Vector2[smPos.size()];
-                                                  minPositions[0] = new Vector2(
-                                                            MyMath.getMinPosition(smPos.get(0), smPos.get(1), new Vector2(0, 0)).x,
-                                                            MyMath.getMinPosition(smPos.get(0), smPos.get(1), new Vector2(0, 0)).y
-                                                  );
-                                                  for (int i=1; i<smPos.size()-1; i++) {
-                                                            minPositions[i] = new Vector2(
-                                                                      MyMath.getMinPosition(smPos.get(i), smPos.get(i+1), new Vector2(0, 0)).x,
-                                                                      MyMath.getMinPosition(smPos.get(i), smPos.get(i+1), new Vector2(0, 0)).y
+                                                  for (int i=1; i<smPos.size(); i++) {
+                                                            minPositions[i-1] = new Vector2(
+                                                                      MyMath.getMinPosition(smPos.get(i-1), smPos.get(i), new Vector2(0, 0)).x,
+                                                                      MyMath.getMinPosition(smPos.get(i-1), smPos.get(i), new Vector2(0, 0)).y
                                                             );
                                                   }
-                                                  double[] distances = new double[3];
-                                                  for (int i=0; i<3; i++) {
+                                                  minPositions[smPos.size()-1] = new Vector2(
+                                                            MyMath.getMinPosition(smPos.get(smPos.size()-1), smPos.get(0), new Vector2(0, 0)).x,
+                                                            MyMath.getMinPosition(smPos.get(smPos.size()-1), smPos.get(0), new Vector2(0, 0)).y
+                                                  );
+                                                  double[] distances = new double[smPos.size()];
+                                                  //System.out.println(minPositions.length);
+                                                  for (int i=0; i<smPos.size(); i++) {
                                                             distances[i] = MyMath.getDistance(0, 0, minPositions[i].x, minPositions[i].y);
                                                   }
                                                   int minIndex = minIndex(distances);
                                                   Vector2 minVec = new Vector2(minPositions[minIndex].x, minPositions[minIndex].y);
-                                                  smPos.add( new Vector2(
+                                                  // ここで任意の位置に挿入したい
+                                                  if (minIndex == smPos.size()-1) minIndex = -1;
+                                                  smPos.add(minIndex+1, new Vector2(
                                                             SMF.getSupportMapping(shapeA, minVec).x - SMF.getSupportMapping(shapeB, minVec.inverse()).x,
                                                             SMF.getSupportMapping(shapeA, minVec).y - SMF.getSupportMapping(shapeB, minVec.inverse()).y
                                                   ));
 
+                                                  //System.out.println(smPos.size());
+
                                                   // 一つ前に求めた点と同じ座標に現在求めた座標が一致していたら終わり
-                                                  if (smPos.get(smPos.size()-1).equals(smPos.get(smPos.size()-2))) break;              
+                                                  if (smPos.get(smPos.size()-1).equals(smPos.get(smPos.size()-2))) break;             
+                                                  else if (smPos.size() > 50) break;
                                         }
 
                                         // 貫通深度
-                                        double penetrationDepth = MyMath.getNorm(smPos.get(smPos.size()-1));
+                                        penetrationDepth = MyMath.getNorm(smPos.get(smPos.size()-1));
                                         // 接触法線ベクトル
-                                        Vector2 contactNormalVector = smPos.get(smPos.size()-1);
+                                        contactNormalVector = smPos.get(smPos.size()-1);
                                         
                                         return true;
                               }
                     }
+          }
+
+          // 貫通深度を返す
+          public double getPenetrationDepth() {
+                    return penetrationDepth;
+          }
+
+          // 接触法線ベクトルを返す
+          public Vector2 getContactNormalVector() {
+                    return contactNormalVector;
           }
 
           public static int minIndex(double[] list) {
