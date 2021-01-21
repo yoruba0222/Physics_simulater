@@ -10,6 +10,8 @@ public class GJK {
           private double penetrationDepth;
           // 接触法線ベクトル
           private Vector2 contactNormalVector;
+          // めり込み解消ベクトル
+          private Vector2 eliminateImmersiveVector;
 
           private ArrayList<Vector2> smPos = new ArrayList<>();
 
@@ -155,14 +157,21 @@ public class GJK {
                                                   //System.out.println(smPos.size());
 
                                                   // 一つ前に求めた点と同じ座標に現在求めた座標が一致していたら終わり
-                                                  if (smPos.get(smPos.size()-1).equals(smPos.get(smPos.size()-2))) break;             
-                                                  else if (smPos.size() > 50) break;
+                                                  if (smPos.get(smPos.size()-1).equals(smPos.get(smPos.size()-2))) {
+                                                            //System.out.println("やったぜ.");
+                                                            break;
+                                                  }
+                                                  else if (smPos.size() > 50) {
+                                                            //System.out.println("妥協");
+                                                            break;
+                                                  }
                                         }
 
                                         // 貫通深度
                                         penetrationDepth = MyMath.getNorm(smPos.get(smPos.size()-1));
                                         // 接触法線ベクトル
                                         contactNormalVector = smPos.get(smPos.size()-1);
+                                        // めり込み解消ベクトル
                                         
                                         return true;
                               }
@@ -177,6 +186,11 @@ public class GJK {
           // 接触法線ベクトルを返す
           public Vector2 getContactNormalVector() {
                     return contactNormalVector;
+          }
+
+          // めり込み解消ベクトルを返す
+          public Vector2 getEliminateImmersveVector() {
+                    return contactNormalVector.normal();
           }
 
           public static int minIndex(double[] list) {

@@ -74,10 +74,28 @@ public class Collision extends Application {
                               rect.setFill(Color.BLUE);
                     } else rect.setFill(Color.RED);
 
-                    Vector2 vec = gjk.getContactNormalVector();
+                    Vector2 vec = gjk.getEliminateImmersveVector();
                     System.out.println(gjk.getPenetrationDepth());
-                    line.setStartX(200);      line.setStartY(200);
-                    line.setEndX(vec.x*100+200);        line.setEndY(vec.y*100+200);
+
+                    // ここで点を求める
+                    Vector2 pos, pos0, pos1;
+                    double tilt = vec.y / vec.x;
+                    pos0 = new Vector2(
+                              circle.getCenterX() + 100,
+                              tilt * (circle.getCenterX() + 100) - tilt * circle.getCenterX() + circle.getCenterY()
+                    );
+                    pos1 = new Vector2(
+                              circle.getCenterX() - 100,
+                              tilt * (circle.getCenterX() - 100) - tilt * circle.getCenterX() + circle.getCenterY()
+                    );
+                    if (
+                              MyMath.getDistance(rect.getX()+rect.getWidth()/2, rect.getY()+rect.getHeight()/2, pos0.x, pos0.y)
+                              > MyMath.getDistance(rect.getX()+rect.getWidth()/2, rect.getY()+rect.getHeight()/2, pos1.x, pos1.y)
+                    ) pos = pos0;
+                    else pos = pos1;
+
+                    line.setStartX(circle.getCenterX());      line.setStartY(circle.getCenterY());
+                    line.setEndX(pos.x);        line.setEndY(pos.y);
 
           }
 

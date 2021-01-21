@@ -21,6 +21,16 @@ public class Vector2 {
                     return new Vector2((-1)*this.x, (-1)*this.y);
           }
 
+          // 法線ベクトルの取得
+          public Vector2 normal() {
+                    return new Vector2(this.y, (-1)*this.x);
+          }
+
+          // ベクトルのノルムの取得
+          public double norm() {
+                    return Math.sqrt(Math.pow(this.x, 2)+Math.pow(this.y, 2));
+          }
+
           // ベクトルの外積
           public static double cross(Vector2 vec0, Vector2 vec1) {
                     return vec0.x * vec1.y - vec0.y * vec1.x;
@@ -45,7 +55,4 @@ public class Vector2 {
           public static double getLength(Vector2 vec0, Vector2 vec1) {
                     return Math.sqrt(Math.pow(vec0.x-vec1.x, 2)+Math.pow(vec0.y-vec1.y, 2));
           }
-
-          // 法線ベクトルを求める
-          
 }
