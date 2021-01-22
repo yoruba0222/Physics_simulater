@@ -8,33 +8,39 @@ import javafx.scene.shape.Shape;
 
 public class PhyInfo {
 
-          public String type;
+          private String type;
 
           private Circle circle;
           private Rectangle rect;
 
-          public double inertia;
-          public double mass;
-          public Vector2 speed;
-          public double angular;
+          private double inertia;
+          private double mass;
+          private Vector2 speed;
+          private double angular;
 
-          public Vector2 initPos;
+          private Vector2 centerPos;
+
+          private Vector2 initPos;
 
           public PhyInfo(Shape shape) {
 
                     if (shape.toString().contains("Rectangle")) {
                               type = "Rectangle";
                               rect = (Rectangle) shape;
+
+                              centerPos = new Vector2(rect.getX()+rect.getWidth()/2, rect.getY()+rect.getHeight()/2);
                     }
                     else if (shape.toString().contains("Circle")) {
                               type = "Circle";
                               circle = (Circle) shape;
 
+                              centerPos = new Vector2(circle.getCenterX(), circle.getCenterY());
+                    }
+
                     mass = 10;
                     speed = new Vector2(0, 0);
                     angular = 0;
                     this.setInertia();
-                    }
           }
 
           public double getMass() { return this.mass; }
@@ -42,6 +48,7 @@ public class PhyInfo {
           public Vector2 getSpeed() {return this.speed; }
           public double getAngular() { return this.angular; }
           public Vector2 getInitPos() { return this.initPos; }
+          public Vector2 getCenterPos() { return this.centerPos; }
 
           public void setMass(double tmp) {
                     this.mass = tmp;
