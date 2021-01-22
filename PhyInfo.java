@@ -35,6 +35,21 @@ public class PhyInfo {
                     }
           }
 
+          public double getMass() { return this.mass; }
+          public double getInertia() { return this.inertia; }
+          public Vector2 getSpeed() {return this.speed; }
+          public double getAngular() { return this.angular; }
+
+          public void setMass(double tmp) {
+                    this.mass = tmp;
+                    this.setInertia();
+          }
+          public void setSpeed(Vector2 tmp) {
+                    this.speed = tmp;
+          }
+          public void setAngular(double tmp) {
+                    this.angular = tmp;
+          }
           public void setInertia() {
                     
                     if (type.equals("Rectangle")) this.inertia = (1/12) * this.mass * (Math.pow(rect.getWidth(), 2)+Math.pow(rect.getHeight(), 2));
