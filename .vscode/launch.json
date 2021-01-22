@@ -1,0 +1,43 @@
+{
+          // Use IntelliSense to learn about possible attributes.
+          // Hover to view descriptions of existing attributes.
+          // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+          "version": "0.2.0",
+          "configurations": [
+                    {
+                              "type": "java",
+                              "name": "Launch Current File",
+                              "request": "launch",
+                              "mainClass": "${file}"
+                    },
+                    {
+                              "type": "java",
+                              "name": "Launch LimitedSystemVersion",
+                              "request": "launch",
+                              "mainClass": "LimitedSystemVersion",
+                              "projectName": "Physics_simulater_9eb53e61"
+                    },
+                    {
+                              "type": "java",
+                              "name": "Launch Otest",
+                              "request": "launch",
+                              "mainClass": "Otest",
+                              "projectName": "Physics_simulater_9eb53e61"
+                    },
+                    {
+                              "type": "java",
+                              "name": "Launch ButtonTest",
+                              "request": "launch",
+                              "mainClass": "test.ButtonTest",
+                              "projectName": "Physics_simulater_9eb53e61"
+                    },
+                    {
+                              "type": "java",
+                              "name": "Launch Collision",
+                              "request": "launch",
+                              "mainClass": "Collision",
+                              "projectName":  "Physics_simulater_9eb53e61",
+                              "vmArgs": "-enableassertions”
+                    }
+          ]
+}

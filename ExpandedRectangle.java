@@ -1,10 +1,14 @@
 import javafx.scene.shape.Rectangle;
 
 public class ExpandedRectangle extends Rectangle {
+
     public Vector2 position = new Vector2(this.getPositionX(), this.getPositionY());
-    public double inertia;
-    //private Vector2 centerOfGravity;
+
+    // 物理的値
     private double mass;
+    private double inertia;
+    private Vector2 speed;
+    private double angular;
 
     @Override
     public String toString() {
