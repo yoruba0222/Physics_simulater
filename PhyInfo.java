@@ -18,6 +18,8 @@ public class PhyInfo {
           public Vector2 speed;
           public double angular;
 
+          public Vector2 initPos;
+
           public PhyInfo(Shape shape) {
 
                     if (shape.toString().contains("Rectangle")) {
@@ -39,6 +41,7 @@ public class PhyInfo {
           public double getInertia() { return this.inertia; }
           public Vector2 getSpeed() {return this.speed; }
           public double getAngular() { return this.angular; }
+          public Vector2 getInitPos() { return this.initPos; }
 
           public void setMass(double tmp) {
                     this.mass = tmp;
@@ -56,5 +59,17 @@ public class PhyInfo {
 
                     else if (type.equals("Circle")) this.inertia = (1/2) * this.mass * Math.pow(circle.getRadius(), 2);
 
+          }
+          public void setInitPos() {
+                    if (type.equals("circle"))
+                    this.initPos = new Vector2(
+                              circle.getCenterX(),
+                              circle.getCenterY()
+                    );
+                    else if (type.equals("Rectangle")) 
+                    this.initPos = new Vector2(
+                              rect.getX(),
+                              rect.getY()
+                    );
           }
 }
