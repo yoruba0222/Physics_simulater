@@ -16,6 +16,19 @@ public class Vector2 {
                     this.y = y;
           }
 
+          // ベクトルの足し算
+          public Vector2 add(Vector2 vec) {
+                    return new Vector2(this.x+vec.x, this.y+vec.y);
+          }
+          public static Vector2 add(Vector2 vec0, Vector2 vec1) {
+                    return new Vector2(vec0.x+vec1.x, vec0.y+vec1.y);
+          }
+
+          // ベクトルの各要素を定数倍する
+          public Vector2 multiple(double value) {
+                    return new Vector2(this.x*value, this.y*value);
+          }
+
           // 逆ベクトルの取得
           public Vector2 inverse() {
                     return new Vector2((-1)*this.x, (-1)*this.y);
@@ -29,6 +42,11 @@ public class Vector2 {
           // ベクトルのノルムの取得
           public double norm() {
                     return Math.sqrt(Math.pow(this.x, 2)+Math.pow(this.y, 2));
+          }
+
+          // ベクトルの内積
+          public static double inner(Vector2 vec0, Vector2 vec1) {
+                    return vec0.x * vec1.x + vec0.y * vec1.y;
           }
 
           // ベクトルの外積
