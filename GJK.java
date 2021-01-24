@@ -31,6 +31,12 @@ public class GJK {
                                         rect.getX() + rect.getWidth() / 2,
                                         rect.getY() + rect.getHeight() / 2
                               );
+                    } else if (shapeA.toString().contains("Circle")) {
+                              circle = (Circle)shapeA;
+                              centerA = new Vector2(
+                                        circle.getCenterX(),
+                                        circle.getCenterY()
+                              );
                     }
                     if (shapeB.toString().contains("Circle")) {
                               circle = (Circle)shapeB;
@@ -38,6 +44,14 @@ public class GJK {
                                         circle.getCenterX(),
                                         circle.getCenterY()
                               );
+                    } else if (shapeB.toString().contains("Rectangle")) {
+                              
+                              rect = (Rectangle)shapeB;
+                              centerB = new Vector2(
+                                        rect.getX() + rect.getWidth() / 2,
+                                        rect.getY() + rect.getHeight() / 2
+                              );
+                              
                     }
 
                     /*

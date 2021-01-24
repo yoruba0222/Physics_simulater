@@ -24,6 +24,8 @@ public class PhyInfo {
 
           public PhyInfo(Shape shape) {
 
+                    initPos = new Vector2(200, 200);
+
                     if (shape.toString().contains("Rectangle")) {
                               type = "Rectangle";
                               rect = (Rectangle) shape;
@@ -41,6 +43,8 @@ public class PhyInfo {
                     speed = new Vector2(0, 0);
                     angular = 0;
                     this.setInertia();
+
+                    if(type.equals("Rectangle")) speed = new Vector2(0-100, -100);
           }
 
           public double getMass() { return this.mass; }
@@ -62,13 +66,18 @@ public class PhyInfo {
           }
           public void setInertia() {
                     
-                    if (type.equals("Rectangle")) this.inertia = (1/12) * this.mass * (Math.pow(rect.getWidth(), 2)+Math.pow(rect.getHeight(), 2));
+                    if (type.equals("Rectangle")) {
+                              this.inertia = (1.0/12.0) * this.mass * (Math.pow(rect.getWidth(), 2)+Math.pow(rect.getHeight(), 2));
+                              System.out.println(rect.getWidth());
+                    }
 
-                    else if (type.equals("Circle")) this.inertia = (1/2) * this.mass * Math.pow(circle.getRadius(), 2);
+                    else if (type.equals("Circle")) this.inertia = (1.0/2.0) * this.mass * Math.pow(circle.getRadius(), 2);
+
+                    
 
           }
           public void setInitPos() {
-                    if (type.equals("circle"))
+                    if (type.equals("Circle"))
                     this.initPos = new Vector2(
                               circle.getCenterX(),
                               circle.getCenterY()
@@ -78,5 +87,12 @@ public class PhyInfo {
                               rect.getX(),
                               rect.getY()
                     );
+          }
+
+          public void init() {
+                    mass = 10;
+                    speed = new Vector2(0, 0);
+                    angular = 0;
+                    this.setInertia();
           }
 }
