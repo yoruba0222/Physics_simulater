@@ -35,8 +35,8 @@ public class Main extends Application {
     private ArrayList<Circle> circleList;
     private ArrayList<Rectangle> rectList;
 
-    private TextField speedField, angularField, sizeField, massFIeld, eField;
-    private Label speedLabel, angularLabel, sizeLabel, massLabel, eLabel;
+    private TextField speedFieldX, speedFieldY, angularField, sizeField, massField, eField;
+    private Label speedLabelX, speedLabelY, angularLabel, sizeLabel, massLabel, eLabel;
 
     private HashMap<Shape, PhyInfo> rigidBodys = new HashMap<>();
 
@@ -76,7 +76,7 @@ public class Main extends Application {
         Menu generateMenu = new Menu("Generate");
         MenuItem menuCircle = new MenuItem("Circle");
         MenuItem menuRectangle = new MenuItem("Rectangle");
-        MenuItem menuEllipse = new MenuItem("Ellipse");
+        //MenuItem menuEllipse = new MenuItem("Ellipse");
 
         // text field settings
         eLabel = new Label("Coefficient of restitution:");
@@ -84,15 +84,46 @@ public class Main extends Application {
         eLabel.setLayoutX(100);
         eField.setLayoutX(250);
 
+        speedLabelX = new Label("speedX");
+        speedLabelY = new Label("speedY");
+        speedFieldX = new TextField();
+        speedFieldY = new TextField();
+        speedLabelX.setLayoutX(450);
+        speedFieldX.setLayoutX(550);
+        speedLabelY.setLayoutX(450);
+        speedFieldY.setLayoutX(550);
+        speedLabelY.setLayoutY(20);
+        speedFieldY.setLayoutY(20);
+
+        massLabel = new Label("mass");
+        massField = new TextField();
+        massLabel.setLayoutX(750);
+        massField.setLayoutX(850);
+
+        angularLabel = new Label("Angular");
+        angularField = new TextField();
+        angularLabel.setLayoutX(1050);
+        angularField.setLayoutX(1150);
+
 
         // text field's even functions settings
         eField.setOnAction(event -> setCoefficientOfRestitution(eField.getText()));
 
-        generateMenu.getItems().addAll(menuCircle,menuEllipse,menuRectangle);
+        speedFieldX.setOnAction(event -> setSpeedX(speedFieldX.getText()));
+        speedFieldY.setOnAction(event -> setSpeedY(speedFieldY.getText()));
+
+        massField.setOnAction(event -> setMass(massField.getText()));
+
+        angularField.setOnAction(event -> setAngular(angularField.getText()));
+        
+        generateMenu.getItems().addAll(menuCircle,menuRectangle);
         menuBar.getMenus().addAll(generateMenu);
         root.getChildren().add(menuBar);
 
-        root.getChildren().addAll(eLabel, eField);
+        root.getChildren().addAll(eLabel, eField,speedLabelX,
+                    speedFieldX, speedLabelY, speedFieldY, massLabel, massField,
+                    angularLabel, angularField
+        );
 
         Scene scene = new Scene(root);
 
@@ -172,4 +203,21 @@ public class Main extends Application {
             System.exit(0);
         }
     } 
+
+    void setSpeedX(String text) {
+          double value = Double.parseDouble(text);
+          rigidBodys.get(rectList.get(0)).setSpeed(new Vector2((-1)*value, rigidBodys.get(rectList.get(0)).getSpeed().y));
+    }
+    void setSpeedY(String text) {
+          double value = Double.parseDouble(text);
+          rigidBodys.get(rectList.get(0)).setSpeed(new Vector2(rigidBodys.get(rectList.get(0)).getSpeed().x, (-1)*value));
+    }
+    void setMass(String text) {
+          double value = Double.parseDouble(text);
+          rigidBodys.get(rectList.get(0)).setMass(value);
+    }
+    void setAngular(String text) {
+              double value = Double.parseDouble(text);
+              rigidBodys.get(rectList.get(0)).setAngular(value);
+    }
 }

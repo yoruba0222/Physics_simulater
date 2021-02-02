@@ -44,7 +44,7 @@ public class PhyInfo {
                     angular = 0;
                     this.setInertia();
 
-                    if(type.equals("Rectangle")) speed = new Vector2(0-100, -100);
+                    if(type.equals("Rectangle")) speed = new Vector2(0, -100);
           }
 
           public double getMass() { return this.mass; }

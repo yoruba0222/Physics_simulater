@@ -1,6 +1,8 @@
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventType;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton; 
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
@@ -19,6 +21,7 @@ public class DragE {
                     scene.setOnMouseClicked(event -> moveObject(event));
                     scene.setOnMouseDragged(event -> moveObject(event));
                     scene.setOnMouseReleased(event -> releaseObject(event));
+                    scene.setOnKeyPressed(event -> deleteObject(event));
           }
 
           public void setDragedCircle(Circle circle){
@@ -129,6 +132,23 @@ public class DragE {
                                         triList.get(i).setLayoutX(event.getSceneX());
                                         triList.get(i).setLayoutY(event.getSceneY());
                                         return;
+                              }
+                    }
+          }
+          public void deleteObject(KeyEvent event) {
+                    System.out.println("あなたのことが好きよ");
+                    if (event.getCode() == KeyCode.DELETE) {
+                              for(int i=0;i < circleList.size();i++) {
+                                        if (circle_Clicked_Frag.get(i)) {
+                                                  circleList.get(i).setRadius(0);
+                                                  System.out.println("すきだよ");
+                                        }
+                              }
+                              for(int i=0;i < triList.size();i++) {
+                                        if (rect_Clicked_Frag.get(i)) {
+                                                  rectList.get(i).setWidth(0);
+                                                  rectList.get(i).setHeight(0);
+                                        }
                               }
                     }
           }

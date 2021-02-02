@@ -146,7 +146,9 @@ public class PhysicsPipeline {
     }
 
     public void initState() {
-
+          for (Rectangle rect : rectList) {
+                    rect.setRotate(0);;
+          }
     }
 
       public void initPosition() {
